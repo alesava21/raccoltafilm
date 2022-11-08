@@ -6,6 +6,8 @@ import java.util.Optional;
 import javax.persistence.EntityManager;
 
 import it.prova.raccoltafilm.dao.UtenteDAO;
+import it.prova.raccoltafilm.exceptions.ElementNotFoundException;
+import it.prova.raccoltafilm.model.Film;
 import it.prova.raccoltafilm.model.Ruolo;
 import it.prova.raccoltafilm.model.Utente;
 import it.prova.raccoltafilm.web.listener.LocalEntityManagerFactoryListener;
@@ -112,7 +114,25 @@ public class UtenteServiceImpl implements UtenteService {
 
 	@Override
 	public void rimuovi(Long idUtenteToRemove) throws Exception {
-		// TODO Auto-generated method stub
+		EntityManager entityManager = LocalEntityManagerFactoryListener.getEntityManager();
+
+		try {
+			entityManager.getTransaction().begin();
+
+			utenteDAO.setEntityManager(entityManager);
+			Utente filmToRemove = utenteDAO.findOne(idUtenteToRemove).orElse(null);
+			if (filmToRemove == null)
+				throw new ElementNotFoundException("Utente con id: " + idUtenteToRemove + " non trovato.");
+
+			utenteDAO.delete(filmToRemove);
+			entityManager.getTransaction().commit();
+		} catch (Exception e) {
+			entityManager.getTransaction().rollback();
+			e.printStackTrace();
+			throw e;
+		} finally {
+			LocalEntityManagerFactoryListener.closeEntityManager(entityManager);
+		}
 
 	}
 
