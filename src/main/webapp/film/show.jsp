@@ -9,7 +9,7 @@
 	   <title>Visualizza Elemento</title>
 	   
 	 </head>
-	   <body class="d-flex flex-column h-100">
+	   <body class="d-flex flex-column h-100" style="background-color: #050402">
 	   
 	   		<!-- Fixed navbar -->
 	   		<jsp:include page="../navbar.jsp"></jsp:include>
@@ -19,8 +19,8 @@
 			<main class="flex-shrink-0">
 			  <div class="container">
 			  
-			  		<div class='card'>
-					    <div class='card-header'>
+			  		<div class='card text-light' style="background-color: #050402">
+					    <div class='card-header text-light' style="background-color: #050402">
 					        <h5>Visualizza dettaglio</h5>
 					    </div>
 					    

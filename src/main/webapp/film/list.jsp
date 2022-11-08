@@ -11,7 +11,7 @@
 	   <title>Pagina dei Risultati</title>
 	 </head>
 	 
-	<body class="d-flex flex-column h-100">
+	<body class="d-flex flex-column h-100" style="background-color: #050402">
 	 
 		<!-- Fixed navbar -->
 		<jsp:include page="../navbar.jsp"></jsp:include>
@@ -32,15 +32,15 @@
 		  
 		  
 		  
-		  		<div class='card'>
-				    <div class='card-header'>
+		  		<div class='card text-light' style="background-color: #050402">
+				    <div class='card-header text-light' style="background-color: #050402">
 				        <h5>Lista dei risultati</h5> 
 				    </div>
 				    <div class='card-body'>
 				    	<a class="btn btn-primary " href="PrepareInsertFilmServlet">Add New</a>
 				    
-				        <div class='table-responsive'>
-				            <table class='table table-striped ' >
+				        <div class='table-responsive text-light'>
+				            <table class='table text-light' >
 				                <thead>
 				                    <tr>
 			                         	<th>Titolo</th>
@@ -59,7 +59,7 @@
 											<td>${filmItem.minutiDurata }</td>
 											<td>
 												<a class="btn  btn-sm btn-outline-secondary" href="ExecuteVisualizzaFilmServlet?idFilm=${filmItem.id }">Visualizza</a>
-												<a class="btn  btn-sm btn-outline-primary ml-2 mr-2" href="laservletpermodificare">Edit</a>
+												<a class="btn  btn-sm btn-outline-primary ml-2 mr-2" href="PrepareUpdateFilmServlet?idFilm=${filmItem.id }">Edit</a>
 												<a class="btn btn-outline-danger btn-sm" href="PrepareDeleteFilmServlet?idFilm=${filmItem.id }">Delete</a>
 											</td>
 										</tr>

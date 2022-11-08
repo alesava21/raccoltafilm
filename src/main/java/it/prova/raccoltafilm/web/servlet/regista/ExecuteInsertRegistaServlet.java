@@ -38,7 +38,7 @@ public class ExecuteInsertRegistaServlet extends HttpServlet {
 				dataDiNascitaParam, sessoParam);
 
 		// se la validazione non risulta ok
-		if (!UtilityForm.validateRegistaBean(registaInstance)) {
+		if (!UtilityForm.validateRegistaBean1(registaInstance)) {
 			request.setAttribute("insert_regista_attr", registaInstance);
 			request.setAttribute("errorMessage", "Attenzione sono presenti errori di validazione");
 			request.getRequestDispatcher("/regista/insert.jsp").forward(request, response);

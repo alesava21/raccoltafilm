@@ -50,15 +50,31 @@ public class Regista {
 		this.dataDiNascita = dataDiNascita;
 		this.sesso = sesso;
 	}
-	
+
 	public Regista(String nome, String cognome, String nickName, Sesso sesso) {
 		this.nome = nome;
 		this.cognome = cognome;
 		this.nickName = nickName;
 		this.sesso = sesso;
 	}
-	
+
 	public Regista(String nome, String cognome, String nickName) {
+		this.nome = nome;
+		this.cognome = cognome;
+		this.nickName = nickName;
+	}
+
+	public Regista(Long id, String nome, String cognome, String nickName, Date dataDiNascita, Sesso sesso) {
+		this.id = id;
+		this.nome = nome;
+		this.cognome = cognome;
+		this.nickName = nickName;
+		this.dataDiNascita = dataDiNascita;
+		this.sesso = sesso;
+	}
+	
+	public Regista(String nome, String cognome, String nickName,
+			String idRegista) {
 		this.nome = nome;
 		this.cognome = cognome;
 		this.nickName = nickName;
