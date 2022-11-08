@@ -49,6 +49,11 @@ public class Film {
 		this.genere = genere;
 	}
 
+	public Film(Regista regista) {
+		super();
+		this.regista = regista;
+	}
+
 	public Long getId() {
 		return id;
 	}

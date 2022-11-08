@@ -63,11 +63,9 @@ public class RegistaServiceImpl implements RegistaService {
 		EntityManager entityManager = LocalEntityManagerFactoryListener.getEntityManager();
 
 		try {
-			// uso l'injection per il dao
 			registaDAO.setEntityManager(entityManager);
 
-			// eseguo quello che realmente devo fare
-			return registaDAO.findOneWithFilms(id);
+			return registaDAO.findOneWithFilms(id); 
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -135,11 +133,11 @@ public class RegistaServiceImpl implements RegistaService {
 			entityManager.getTransaction().begin();
 
 			registaDAO.setEntityManager(entityManager);
-			Regista filmToRemove = registaDAO.findOne(idRegista).orElse(null);
-			if (filmToRemove == null)
-				throw new ElementNotFoundException("Utente con id: " + idRegista + " non trovato.");
+			Regista registaToRemove = registaDAO.findOne(idRegista).orElse(null);
+			if (registaToRemove == null)
+				throw new ElementNotFoundException("Film con id: " + idRegista + " non trovato.");
 
-			registaDAO.delete(filmToRemove);
+			registaDAO.delete(registaToRemove);
 			entityManager.getTransaction().commit();
 		} catch (Exception e) {
 			entityManager.getTransaction().rollback();

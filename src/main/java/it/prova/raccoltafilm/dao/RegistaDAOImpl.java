@@ -11,6 +11,7 @@ import javax.persistence.TypedQuery;
 
 import org.apache.commons.lang3.StringUtils;
 
+import it.prova.raccoltafilm.exceptions.RegistaConFilmAssociatiException;
 import it.prova.raccoltafilm.model.Regista;
 
 public class RegistaDAOImpl implements RegistaDAO {
@@ -55,7 +56,7 @@ public class RegistaDAOImpl implements RegistaDAO {
 		if (registaInstance == null) {
 			throw new Exception("Problema valore in input");
 		}
-		entityManager.persist(registaInstance);
+		entityManager.remove(entityManager.merge(registaInstance));
 	}
 
 	@Override
@@ -101,9 +102,12 @@ public class RegistaDAOImpl implements RegistaDAO {
 
 	@Override
 	public Regista findOneWithFilms(Long id) throws Exception {
-		TypedQuery<Regista> query = entityManager.createQuery("select r from Regista r join fetch Film f on r.id = regista_id where r.id = :id", Regista.class);
-		query.setParameter("id", id);
-		
+		TypedQuery<Regista> query = entityManager
+				.createQuery("select r from Regista r join r.films f where r.id = :id", Regista.class)
+				.setParameter("id", id);
+		if (!query.getResultList().isEmpty())
+			throw new RegistaConFilmAssociatiException("Impossibile eliminare un regista che ha dei film associati");
+
 		return query.getSingleResult();
 	}
 

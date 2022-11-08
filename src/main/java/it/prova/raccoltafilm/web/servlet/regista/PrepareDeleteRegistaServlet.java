@@ -11,12 +11,21 @@ import org.apache.commons.lang3.math.NumberUtils;
 
 import it.prova.raccoltafilm.model.Regista;
 import it.prova.raccoltafilm.service.MyServiceFactory;
+import it.prova.raccoltafilm.service.RegistaService;
 
 @WebServlet("/PrepareDeleteRegistaServlet")
 public class PrepareDeleteRegistaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+	// injection del Service
+	private RegistaService registaService;
+
+	public PrepareDeleteRegistaServlet() {
+		this.registaService = MyServiceFactory.getRegistaServiceInstance();
+	}
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		String idRegistaParam = request.getParameter("idRegista");
 
 		if (!NumberUtils.isCreatable(idRegistaParam)) {
@@ -27,8 +36,7 @@ public class PrepareDeleteRegistaServlet extends HttpServlet {
 		}
 
 		try {
-			Regista registaInstance = MyServiceFactory.getRegistaServiceInstance()
-					.caricaSingoloElemento(Long.parseLong(idRegistaParam));
+			Regista registaInstance = registaService.caricaSingoloElemento(Long.parseLong(idRegistaParam));
 
 			if (registaInstance == null) {
 				request.setAttribute("errorMessage", "Elemento non trovato.");
@@ -47,6 +55,7 @@ public class PrepareDeleteRegistaServlet extends HttpServlet {
 		}
 
 		request.getRequestDispatcher("/regista/delete.jsp").forward(request, response);
+
 	}
 
 }
