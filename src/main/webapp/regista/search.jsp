@@ -7,7 +7,7 @@
 	   
 	   <title>Ricerca</title>
 	 </head>
-	   <body class="d-flex flex-column h-100">
+	   <body class="d-flex flex-column h-100" style="background-color: #050402">
 	   
 	   		<!-- Fixed navbar -->
 	   		<jsp:include page="../navbar.jsp"></jsp:include>
@@ -22,8 +22,8 @@
 					  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" ></button>
 					</div>
 			  
-			  <div class='card'>
-				    <div class='card-header'>
+			  <div class='card text-light' style="background-color: #050402">
+				    <div class='card-header text-light' style="background-color: #050402">
 				        <h5>Ricerca elementi</h5> 
 				    </div>
 				    <div class='card-body'>

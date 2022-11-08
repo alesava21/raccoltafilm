@@ -11,7 +11,7 @@
 	   <title>Pagina dei Risultati</title>
 	 </head>
 	 
-	<body class="d-flex flex-column h-100">
+	<body class="d-flex flex-column h-100" style="background-color: #050402">
 	 
 		<!-- Fixed navbar -->
 		<jsp:include page="../navbar.jsp"></jsp:include>
@@ -36,15 +36,15 @@
 		  
 		  
 		  
-		  		<div class='card'>
-				    <div class='card-header'>
+		  		<div class='card text-light' style="background-color: #050402">
+				    <div class='card-header text-light' style="background-color: #050402">
 				        <h5>Lista dei risultati</h5> 
 				    </div>
-				    <div class='card-body'>
+				    <div class='card-body text-light'>
 				    	<a class="btn btn-primary " href="PrepareInsertRegistaServlet">Add New</a>
 				    
-				        <div class='table-responsive'>
-				            <table class='table table-striped ' >
+				        <div class='table-responsive text-light'>
+				            <table class='table text-light ' >
 				                <thead>
 				                    <tr>
 			                         	<th>Nome</th>
