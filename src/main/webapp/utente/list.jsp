@@ -38,7 +38,7 @@
 		  
 		  		<div class='card text-light' style="background-color: #050402">
 				    <div class='card-header text-light' style="background-color: #050402">
-				        <h5>Lista dei risultati</h5> 
+				        <h5>Lista Utenti</h5> 
 				    </div>
 				    <div class='card-body text-light'>
 				    	<!--  <a class="btn btn-primary " href="#">Add New</a>-->
@@ -60,7 +60,10 @@
 										<td>${utenteItem.nome }</td>
 										<td>${utenteItem.cognome }</td>
 										<td><fmt:formatDate type="date"
-												value="${utenteItem.dateCreated }" /></td>
+												value="${utenteItem.dateCreated }" />
+											<a class="btn  btn-sm btn-outline-secondary" href="ExecuteVisualizzaUtenteServlet?idUtente=${utenteItem.id }">Visualizza</a>
+											
+										</td>										
 
 									</tr>
 								</c:forEach>
@@ -68,7 +71,7 @@
 				            </table>
 				        </div>
 				        <div class='card-footer'>
-					        <a href="PrepareSearchUtentiServlet" class='btn btn-outline-secondary' style='width:80px'>
+					        <a href="${pageContext.request.contextPath}/admin/PrepareSearchUtentiServlet" class='btn btn-outline-secondary' style='width:80px'>
 					            <i class='fa fa-chevron-left'></i> Back
 					        </a>
 				   

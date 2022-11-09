@@ -1,4 +1,6 @@
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!doctype html>
 <html lang="it" class="h-100" >
 	 <head>
@@ -40,39 +42,35 @@
 							<h6 class="card-title">I campi con <span class="text-danger">*</span> sono obbligatori</h6>
 		
 		
-							<form method="post" action="ExecuteInsertRegistaServlet" class="row g-3" novalidate="novalidate">
+							<form method="post" action="ExecuteInsertUtenteServlet" class="row g-3" novalidate="novalidate">
 							
 							
 								<div class="col-md-6">
 									<label for="nome" class="form-label">Nome <span class="text-danger">*</span></label>
-									<input type="text" name="nome" id="nome" class="form-control" placeholder="Inserire il nome" value="${insert_regista_attr.nome }" required>
+									<input type="text" name="nome" id="nome" class="form-control" placeholder="Inserire il nome" value="${insert_utente_attr.nome }" required>
 								</div>
 								
 								<div class="col-md-6">
 									<label for="cognome" class="form-label">Cognome <span class="text-danger">*</span></label>
-									<input type="text" name="cognome" id="cognome" class="form-control" placeholder="Inserire il cognome" value="${insert_regista_attr.cognome }" required>
+									<input type="text" name="cognome" id="cognome" class="form-control" placeholder="Inserire il cognome" value="${insert_utente_attr.cognome }" required>
 								</div>
 							
 								<div class="col-md-6">
-									<label for="nickName" class="form-label">Nickname <span class="text-danger">*</span></label>
-									<input type="text" class="form-control" name="nickName" id="nickName" placeholder="Inserire il nickname" value="${insert_regista_attr.nickName }" required>
+									<label for="username" class="form-label">Username <span class="text-danger">*</span></label>
+									<input type="text" class="form-control" name="username" id="username" placeholder="Inserire lo username" value="${insert_utente_attr.username }" required>
 								</div>
 								
-								<fmt:formatDate pattern='yyyy-MM-dd' var="parsedDate" type='date' value='${insert_regista_attr.dataDiNascita}' />
-								<div class="col-md-3">
-									<label for="dataDiNascita" class="form-label">Data di Nascita <span class="text-danger">*</span></label>
-                        			<input class="form-control" id="dataDiNascita" type="date" placeholder="dd/MM/yy"
-                            			title="formato : gg/mm/aaaa"  name="dataDiNascita" required value="${parsedDate}" >
+								<div class="col-md-6">
+									<label for="password" class="form-label">Password <span class="text-danger">*</span></label>
+									<input type="password" class="form-control" name="password" id="password" placeholder="Inserire la password" value="${insert_utente_attr.password }" required>
 								</div>
 								
-								<div class="col-md-3">
-									<label for="sesso" class="form-label">Sesso <span class="text-danger">*</span></label>
-								    <select class="form-select" id="sesso" name="sesso" required>
-								    	<option value="" selected> - Selezionare - </option>
-								      	<option value="MASCHIO" ${insert_regista_attr.sesso == 'MASCHIO'?'selected':''} >M</option>
-								      	<option value="FEMMINA" ${insert_regista_attr.sesso == 'FEMMINA'?'selected':''} >F</option>
-								    </select>
+								<div class="col-md-6">
+									<label for="passwordConf" class="form-label">Conferma Password<span class="text-danger">*</span></label>
+									<input type="password" class="form-control" name="passwordConf" id="passwordConf" placeholder="Inserire la password" value="${insert_utente_attr.password }" required>
 								</div>
+								
+								
 								
 								
 							<div class="col-12">

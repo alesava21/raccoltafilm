@@ -5,7 +5,7 @@
 	 	<!-- Common imports in pages -->
 	 	<jsp:include page="../header.jsp" />
 	   
-	   <title>Ricerca</title>
+	   <title>Ricerca Utenti</title>
 	 </head>
 	   <body class="d-flex flex-column h-100" style="background-color: #050402">
 	   
@@ -53,12 +53,13 @@
 								
 							<div class="col-12">
 								<button type="submit" name="submit" value="submit" id="submit" class="btn btn-primary">Conferma</button>
-								<a class="btn btn-outline-primary ml-2" href="#">Add New</a>
+								<a class="btn btn-outline-primary ml-2" href="${pageContext.request.contextPath}/admin/PrepareInsertUtenteServlet">Add New</a>
 								<input class="btn btn-outline-warning" type="reset" value="Ripulisci">
 							</div>
+							</form>
 					    </div>
 		
-						</form>
+
   
 				    
 				    

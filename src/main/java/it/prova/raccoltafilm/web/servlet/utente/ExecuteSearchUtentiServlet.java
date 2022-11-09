@@ -11,7 +11,7 @@ import it.prova.raccoltafilm.service.MyServiceFactory;
 import it.prova.raccoltafilm.service.UtenteService;
 import it.prova.raccoltafilm.utility.UtilityForm;
 
-@WebServlet("/ExecuteSearchUtentiServlet")
+@WebServlet("/admin/ExecuteSearchUtentiServlet")
 public class ExecuteSearchUtentiServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
@@ -39,7 +39,7 @@ public class ExecuteSearchUtentiServlet extends HttpServlet {
 				request.getRequestDispatcher("/utente/search.jsp").forward(request, response);
 				return;
 			}
-			request.getRequestDispatcher("utente/list.jsp").forward(request, response);
+			request.getRequestDispatcher("/utente/list.jsp").forward(request, response);
 	}
 
 }

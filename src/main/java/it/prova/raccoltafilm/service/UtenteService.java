@@ -28,5 +28,8 @@ public interface UtenteService  {
 
 	//per injection
 	public void setUtenteDAO(UtenteDAO utenteDAO);
+	
+	public Utente caricaSingoloElementoEager(Long id) throws Exception;
+
 
 }
