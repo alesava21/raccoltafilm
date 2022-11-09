@@ -66,6 +66,12 @@ public class Utente {
 		this.cognome = cognome;
 		this.dateCreated = dateCreated;
 	}
+	
+	public Utente(String username, String nome, String cognome) {
+		this.username = username;
+		this.nome = nome;
+		this.cognome = cognome;
+	}
 
 	public Long getId() {
 		return id;

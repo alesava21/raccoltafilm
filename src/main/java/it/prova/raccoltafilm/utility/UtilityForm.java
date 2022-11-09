@@ -12,6 +12,7 @@ import com.mysql.cj.conf.HostInfo;
 import it.prova.raccoltafilm.model.Film;
 import it.prova.raccoltafilm.model.Regista;
 import it.prova.raccoltafilm.model.Sesso;
+import it.prova.raccoltafilm.model.Utente;
 
 public class UtilityForm {
 
@@ -128,6 +129,32 @@ public class UtilityForm {
 			return false;
 		}
 		return true;
+	}
+	
+	public static Utente createUtenteFromParams(String nomeInputParam, String cognomeInputParam,
+			String userNameInputParam, String dataCreazioneStringParam) {
+
+		Utente result = new Utente(nomeInputParam, cognomeInputParam, userNameInputParam);
+		result.setDateCreated(parseDateArrivoFromString(dataCreazioneStringParam));
+		return result;
+	}
+
+	public static boolean validateUtenteBean(Utente utenteToBeValidated) {
+		// prima controlliamo che non siano vuoti i parametri
+		if (StringUtils.isBlank(utenteToBeValidated.getNome()) 
+				|| StringUtils.isBlank(utenteToBeValidated.getCognome())
+				|| StringUtils.isBlank(utenteToBeValidated.getUsername())
+				|| utenteToBeValidated.getDateCreated() == null) {
+			return false;
+		}
+		return true;
+	}
+	
+	public static Utente createUtenteFromParams(String nomeInputParam, String cognomeInputParam,
+			String userNameInputParam, String passwordParam, Date dataCreazione) {
+
+		Utente result = new Utente(nomeInputParam, cognomeInputParam, userNameInputParam, passwordParam, dataCreazione);
+		return result;
 	}
 
 	public static Date parseDateArrivoFromString(String dataDiNascitaStringParam) {
