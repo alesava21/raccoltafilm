@@ -97,25 +97,27 @@ public class UtenteDAOImpl implements UtenteDAO {
 	public List<Utente> findUtente(Utente utenteInstance) throws Exception {
 		Map<String, Object> paramaterMap = new HashMap<String, Object>();
 		List<String> whereClauses = new ArrayList<String>();
-		
+
 		StringBuilder queryBuilder = new StringBuilder("select u from Utente u where u.id = u.id ");
-		
-		if (StringUtils.isNotBlank(utenteInstance.getUsername())) {
-			whereClauses.add(" u.username  like :username ");
-			paramaterMap.put("username", "%" + utenteInstance.getUsername() + "%");
-		}
-		if (StringUtils.isNotBlank(utenteInstance.getNome())) {
+
+		if (StringUtils.isNotEmpty(utenteInstance.getNome())) {
 			whereClauses.add(" u.nome  like :nome ");
 			paramaterMap.put("nome", "%" + utenteInstance.getNome() + "%");
 		}
-		if (StringUtils.isNotBlank(utenteInstance.getCognome())) {
+		if (StringUtils.isNotEmpty(utenteInstance.getCognome())) {
 			whereClauses.add(" u.cognome like :cognome ");
 			paramaterMap.put("cognome", "%" + utenteInstance.getCognome() + "%");
 		}
+		if (StringUtils.isNotEmpty(utenteInstance.getUsername())) {
+			whereClauses.add(" u.username like :username ");
+			paramaterMap.put("username", "%" + utenteInstance.getUsername() + "%");
+		}
+
 		if (utenteInstance.getDateCreated() != null) {
 			whereClauses.add("u.dateCreated >= :dateCreated ");
 			paramaterMap.put("dateCreated", utenteInstance.getDateCreated());
 		}
+
 		queryBuilder.append(!whereClauses.isEmpty() ? " and " : "");
 		queryBuilder.append(StringUtils.join(whereClauses, " and "));
 		TypedQuery<Utente> typedQuery = entityManager.createQuery(queryBuilder.toString(), Utente.class);
