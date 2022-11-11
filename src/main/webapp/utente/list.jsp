@@ -61,7 +61,7 @@
 										<td>${utenteItem.cognome }</td>
 										<td><fmt:formatDate type="date"
 												value="${utenteItem.dateCreated }" />
-											<a class="btn  btn-sm btn-outline-secondary" href="ExecuteVisualizzaUtenteServlet?idUtente=${utenteItem.id }">Visualizza</a>
+											<a class="btn  btn-sm btn-outline-secondary" href="ExecuteVisualizzaUtenteServlet?idUtente=${utenteItem.id}">Visualizza</a>
 											
 										</td>										
 

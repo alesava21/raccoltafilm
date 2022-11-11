@@ -17,11 +17,9 @@ import it.prova.raccoltafilm.service.UtenteService;
 public class PrepareInsertUtenteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	private UtenteService utenteService;
 	private RuoloService ruoloService;
 	
 	public PrepareInsertUtenteServlet() {
-		this.utenteService = MyServiceFactory.getUtenteServiceInstance();
 		this.ruoloService = MyServiceFactory.getRuoloServiceInstance();
 	}
        
